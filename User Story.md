@@ -1,45 +1,103 @@
-# User Story: Generate SKU Labels from PDF Barcode Files
+# User Stories
 
-## Title
-**As a user, I want to generate Avery 5160 labels from PDF barcode files, so that I can easily print and use them.**
+## User Story 1: Extract Invoice Data
 
-## Description
-The SKU Labels Generator application allows users to select one or more PDF files containing barcode images and generate Avery 5160 labels from those images. The output will include a header with the original filename and the labels will be saved in a user-specified directory.
+**Title:** Extract Invoice Data from QuickBooks PDFs  
+**As a** user  
+**I want to** extract invoice data from multiple QuickBooks PDF invoices  
+**So that** I can process and analyze the invoice information efficiently  
 
-## Acceptance Criteria
-1. **File Selection:**
-   - Given the application is running,
-   - When I open the file selection dialog,
-   - Then I can select one or more PDF files containing barcode images.
+### Tasks
+- Implement a function to open and read multiple PDF files.
+- Use regex to extract the invoice number, bill-to information, and invoice table data.
+- Add filtering conditions for the data.
 
-2. **Output Directory Selection:**
-   - Given the application is running,
-   - When I open the directory selection dialog,
-   - Then I can specify an output directory where the generated label PDF files will be saved.
+### Acceptance Criteria
+- **Given** I have multiple QuickBooks PDF invoices  
+  **When** I run the script  
+  **Then** I should be able to select multiple PDF files  
+  **And** the script should extract the invoice number, bill-to information, and invoice table data  
+  **And** the data should be filtered based on specified conditions which can be modified as needed  
 
-3. **Label Generation:**
-   - Given I have selected PDF files and an output directory,
-   - When I start the label generation process,
-   - Then the application extracts barcode images from each PDF file,
-   - And generates a new PDF file formatted as Avery 5160 labels for each input file,
-   - And includes a header with the original filename (without the extension) at the top of each generated PDF.
+### Definition of Done
+- Code is written and reviewed.
+- Unit tests are created and pass.
+- Documentation is updated with usage instructions.
+- The script successfully extracts data from sample PDFs.
 
-4. **Completion Notification:**
-   - Given the label generation process is complete,
-   - When the application finishes processing,
-   - Then I receive a notification that the process is complete,
-   - And I can see the location of the saved files.
+---
 
-## Tasks
-1. Implement the file selection dialog using `tkinter`.
-2. Implement the output directory selection dialog using `tkinter`.
-3. Extract barcode images from the selected PDF files using `PyMuPDF`.
-4. Generate Avery 5160 labels using `ReportLab` and include a header with the filename.
-5. Implement user notifications for process completion.
+## User Story 2: Create Excel Template
 
-## Definition of Done
-- The application allows users to select PDF files and an output directory.
-- Barcode images are correctly extracted from the selected PDF files.
-- Avery 5160 labels are generated with a header containing the original filename.
-- The generated PDF files are saved in the specified output directory.
-- Users are notified upon completion of the label generation process.
+**Title:** Create an Excel Template for Import  
+**As a** user  
+**I want to** create an Excel template based on the current system import mapping  
+**So that** I can ensure the extracted data is mapped correctly  
+
+### Tasks
+- Define the structure of the Excel template.
+- Implement a function to create the Excel template with the specified structure.
+- Ensure column headers and formatting are correctly applied.
+
+### Acceptance Criteria
+- **Given** I have run the script  
+  **When** the script generates an Excel template  
+  **Then** the template should have predefined column headers and formatting  
+  **And** it should include all necessary columns for order information and product details  
+
+### Definition of Done
+- Code is written and reviewed.
+- Unit tests are created and pass.
+- Documentation is updated with template structure details.
+- The script successfully creates the template with correct formatting.
+
+---
+
+## User Story 3: Map Data to Excel Template
+
+**Title:** Map Extracted Data to Excel Template  
+**As a** user  
+**I want to** map the extracted invoice data to the generated Excel template  
+**So that** I can have a structured and organized representation of the invoice data  
+
+### Tasks
+- Implement a function to map the extracted data to the corresponding columns in the template.
+- Ensure data alignment and handle any formatting issues.
+- Auto-fit column widths based on content.
+
+### Acceptance Criteria
+- **Given** I have extracted invoice data and generated an Excel template  
+  **When** the script maps the data to the template  
+  **Then** the data should be correctly aligned with the corresponding columns  
+  **And** there should be no empty rows between mapped data  
+  **And** the column widths should auto-fit the content  
+
+### Definition of Done
+- Code is written and reviewed.
+- Unit tests are created and pass.
+- Documentation is updated with mapping details.
+- The script successfully maps data to the template without errors.
+
+---
+
+## User Story 4: Provide Feedback on Completion
+
+**Title:** Notify User Upon Successful Template Creation  
+**As a** user  
+**I want to** receive a notification upon the successful creation and saving of the Excel template  
+**So that** I know the process has been completed  
+
+### Tasks
+- Implement a notification function to display a message box upon completion.
+- Ensure the message box displays the correct information about the saved template.
+
+### Acceptance Criteria
+- **Given** the script has finished processing the PDF invoices and saved the Excel template  
+  **When** the process is complete  
+  **Then** a message box should display confirming the successful creation and saving of the template  
+
+### Definition of Done
+- Code is written and reviewed.
+- Unit tests are created and pass.
+- Documentation is updated with completion notification details.
+- The script successfully displays the message box upon completion.
